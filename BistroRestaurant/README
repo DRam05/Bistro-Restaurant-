@@ -134,24 +134,21 @@ A mock restaurant ordering application written in Java. This program was develop
 ## Seed and Checksum Formulas
 
 ### Seed Formula
-```java
 for (char c : netID.toCharArray()) {
     s += (int) c;
 }
-```
+
 This takes each character in the user’s NetID, converts it to its ASCII value, and sums the values to produce the seed.
 
 ---
 
 ### Checksum Formula
-```java
 Math.round(orderSubtotal * 100 + seed + totalUnitsUsedAllIngredients) % 9973;
-```
+
 This formula multiplies the subtotal by 100 and rounds it to an integer, adds the seed and the total number of ingredient units used, and then computes the remainder when divided by 9973.
 
 ---
 
 ## Author
-
 **Diego Ramos**  
 COSC 237 — Fall 2025
