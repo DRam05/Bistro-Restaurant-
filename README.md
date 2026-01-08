@@ -1,0 +1,164 @@
+# Byte Bistro – Restaurant Ordering Simulation
+
+A mock restaurant ordering application written in Java. This program was developed as a university course project. The application focuses on 
+object-oriented programming concepts such as classes and subclasses, the use of Java collections, file input/output, and mathematical 
+operations using ASCII character values to generate discounts and receipts.
+
+---
+
+## Technologies
+
+- **Java** (Object-Oriented Programming)
+
+- **Java Collections Framework**
+  - `ArrayList`
+  - `HashMap`
+
+- **File I/O**
+  - Reading CSV files
+  - Reading plain text files
+  - Writing output transcripts
+
+- **Random Number Generation**
+  - `java.util.Random` with seeded randomness
+
+- **Exception Handling**
+  - Custom exceptions for inventory validation
+
+- **Date & Time API**
+  - `LocalDateTime` for receipt timestamps
+
+---
+
+## Features
+
+### Seed Calculation
+- A deterministic seed is calculated using the sum of the ASCII values of each character in the user’s NetID.
+
+- This seed ensures that the following are reproducible for the same NetID:
+  - The daily discount
+  - Ingredient spoilage
+  - Checksum calculation
+
+---
+
+### Daily Discount Generation
+- The discounted category is determined by:
+  ```
+  dayIndex = seed % 3
+  ```
+  - `0` → Entree  
+  - `1` → Beverage  
+  - `2` → Dessert  
+
+- The discount percentage is determined by:
+  ```
+  discountPercent = 3 + (seed % 5)
+  ```
+
+- Only one category per day receives a discount.
+
+---
+
+### Inventory Validation
+- Before any order is processed:
+  - The program verifies that the pantry has enough ingredients for all orders.
+- If inventory is insufficient:
+  - An `InsufficientInventoryException` is thrown.
+  - No inventory is deducted.
+
+---
+
+### Pantry Management
+- Pantry inventory is reduced:
+  - When orders are fulfilled
+  - When spoilage is applied
+- Ingredient quantities are never allowed to drop below zero.
+
+---
+
+### Spoilage Simulation
+- After all orders are processed, a random number of ingredients spoil:
+  ```
+  m = 1 + (seed % 2)
+  ```
+- Each spoiled ingredient loses a random amount between 1 and 3 units.
+- Spoilage is recorded and displayed in the receipt transcript.
+
+---
+
+### Receipt Generation
+- The program generates a detailed receipt transcript that includes:
+  - Discount information
+  - Itemized orders by category
+  - Discounted prices where applicable
+  - Subtotal
+  - Tax (6%)
+  - Final total
+  - Spoilage report
+  - Ending pantry inventory
+  - Checksum value
+
+---
+
+## The Process
+
+- For this project, I was provided with a UML diagram that showcased all required files and methods. Along with the UML diagram, some files were
+partially completed while others were empty and required full implementation.
+
+- I began with the `Ingredient` class by implementing the constructor and getter methods.
+
+- Next, I worked on the `IngredientAmount` class, implementing constructors, getters, and the `setRequiredAmount` and `deduct` methods to 
+manage ingredient quantities during order processing.
+
+- I then implemented constructors and getters for the `MenuItem` and `OrderLine` classes.
+
+- After that, I completed the `Pantry` class, which loads ingredient data from a CSV file and validates whether sufficient ingredients exist to 
+fulfill incoming orders.
+
+- I then implemented the `Orders` class, which reads the order script file, validates orders against the pantry, computes subtotals with 
+applicable discounts, builds the receipt, and calculates the total amount of ingredients used.
+
+- Next, I implemented the `Restaurant` class, which generates the seed based on the user’s NetID using ASCII values and determines which menu 
+category receives a discount and by how much.
+
+- Finally, I completed the `Main` file, which reads the input files (`ingredients.csv`, `recipes.csv`, and `orders.txt`), prompts the user for 
+their NetID, and outputs a `receipt.txt` file to the `lib` folder. The receipt displays order details, applied discounts, spoiled ingredients, 
+and the ending pantry inventory.
+
+---
+
+## What I Learned
+
+- How file input/output integrates real-world data into programs
+  - Reading `.txt` and `.csv` files
+  - Writing processed data to output files
+- How object-oriented design helps manage complex systems
+- Writing code that follows a UML diagram and specification
+- How seeded randomness allows reproducible simulations
+- The importance of separating responsibilities across classes
+
+---
+
+## Seed and Checksum Formulas
+
+### Seed Formula
+for (char c : netID.toCharArray()) {
+    s += (int) c;
+}
+
+This takes each character in the user’s NetID, converts it to its ASCII value, and sums the values to produce the seed.
+
+---
+
+### Checksum Formula
+Math.round(orderSubtotal * 100 + seed + totalUnitsUsedAllIngredients) % 9973;
+
+This formula multiplies the subtotal by 100 and rounds it to an integer, adds the seed and the total number of ingredient units used, 
+and then computes the remainder when divided by 9973.
+
+---
+
+## Author
+**Diego Ramos**  
+COSC 237 — Fall 2025
