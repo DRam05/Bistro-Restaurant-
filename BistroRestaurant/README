@@ -1,6 +1,8 @@
 # Byte Bistro – Restaurant Ordering Simulation
 
-A mock restaurant ordering application written in Java. This program was developed as a university course project. The application focuses on object-oriented programming concepts such as classes and subclasses, the use of Java collections, file input/output, and mathematical operations using ASCII character values to generate discounts and receipts.
+A mock restaurant ordering application written in Java. This program was developed as a university course project. The application focuses on 
+object-oriented programming concepts such as classes and subclasses, the use of Java collections, file input/output, and mathematical 
+operations using ASCII character values to generate discounts and receipts.
 
 ---
 
@@ -101,21 +103,28 @@ A mock restaurant ordering application written in Java. This program was develop
 
 ## The Process
 
-- For this project, I was provided with a UML diagram that showcased all required files and methods. Along with the UML diagram, some files were partially completed while others were empty and required full implementation.
+- For this project, I was provided with a UML diagram that showcased all required files and methods. Along with the UML diagram, some files were
+partially completed while others were empty and required full implementation.
 
 - I began with the `Ingredient` class by implementing the constructor and getter methods.
 
-- Next, I worked on the `IngredientAmount` class, implementing constructors, getters, and the `setRequiredAmount` and `deduct` methods to manage ingredient quantities during order processing.
+- Next, I worked on the `IngredientAmount` class, implementing constructors, getters, and the `setRequiredAmount` and `deduct` methods to 
+manage ingredient quantities during order processing.
 
 - I then implemented constructors and getters for the `MenuItem` and `OrderLine` classes.
 
-- After that, I completed the `Pantry` class, which loads ingredient data from a CSV file and validates whether sufficient ingredients exist to fulfill incoming orders.
+- After that, I completed the `Pantry` class, which loads ingredient data from a CSV file and validates whether sufficient ingredients exist to 
+fulfill incoming orders.
 
-- I then implemented the `Orders` class, which reads the order script file, validates orders against the pantry, computes subtotals with applicable discounts, builds the receipt, and calculates the total amount of ingredients used.
+- I then implemented the `Orders` class, which reads the order script file, validates orders against the pantry, computes subtotals with 
+applicable discounts, builds the receipt, and calculates the total amount of ingredients used.
 
-- Next, I implemented the `Restaurant` class, which generates the seed based on the user’s NetID using ASCII values and determines which menu category receives a discount and by how much.
+- Next, I implemented the `Restaurant` class, which generates the seed based on the user’s NetID using ASCII values and determines which menu 
+category receives a discount and by how much.
 
-- Finally, I completed the `Main` file, which reads the input files (`ingredients.csv`, `recipes.csv`, and `orders.txt`), prompts the user for their NetID, and outputs a `receipt.txt` file to the `lib` folder. The receipt displays order details, applied discounts, spoiled ingredients, and the ending pantry inventory.
+- Finally, I completed the `Main` file, which reads the input files (`ingredients.csv`, `recipes.csv`, and `orders.txt`), prompts the user for 
+their NetID, and outputs a `receipt.txt` file to the `lib` folder. The receipt displays order details, applied discounts, spoiled ingredients, 
+and the ending pantry inventory.
 
 ---
 
@@ -145,7 +154,8 @@ This takes each character in the user’s NetID, converts it to its ASCII value,
 ### Checksum Formula
 Math.round(orderSubtotal * 100 + seed + totalUnitsUsedAllIngredients) % 9973;
 
-This formula multiplies the subtotal by 100 and rounds it to an integer, adds the seed and the total number of ingredient units used, and then computes the remainder when divided by 9973.
+This formula multiplies the subtotal by 100 and rounds it to an integer, adds the seed and the total number of ingredient units used, 
+and then computes the remainder when divided by 9973.
 
 ---
 
