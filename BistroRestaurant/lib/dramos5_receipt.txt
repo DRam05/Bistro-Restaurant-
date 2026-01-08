@@ -1,0 +1,34 @@
+TODAY'S CATEGORY DISCOUNT
+Entree   7%
+PANTRY INGREDIENTS REPORT (Initial)
+CoffeeBeans,  grams, 492.0
+Flour,  grams, 1400.0
+Egg,  piece, 20.0
+Cocoa,  grams, 260.0
+Sugar,  grams, 1127.0
+Milk,  ml, 0.0
+BYTE BISTRO — Towson
+netID: dramos5
+Daily Discount:Entree at 7%
+Date: 2025-10-27 20:00
+ 
+-- ENTREES --
+Pancakes x2 @ 5.50 = $10.23 (after 7% DCD)
+-- BEVERAGES --
+Latte x3 @ 3.75 = $11.25
+-- DESSERTS --
+ChocolateMousse x1 @ 4.25 = $4.25
+Subtotal: $26.50
+Tax (6%): $1.59
+TOTAL: $28.09
+SPOILAGE REPORT
+Sugar: 3  grams
+Milk: 0  ml
+PANTRY INGREDIENTS REPORT (Ending)
+Egg,  piece, 20.0
+CoffeeBeans,  grams, 492.0
+Flour,  grams, 1400.0
+Cocoa,  grams, 260.0
+Sugar,  grams, 1127.0
+Milk,  ml, 0.0
+CHECKSUM 4880

@@ -1,0 +1,3 @@
+Entree, Pancakes, 2
+Beverage, Latte, 3
+Dessert, ChocolateMousse, 1
